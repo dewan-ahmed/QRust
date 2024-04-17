@@ -11,7 +11,6 @@ fn main() {
     let url = &args[1];
     let code = QrCode::new(url).unwrap();
     let image = code.render::<char>().quiet_zone(false).build();
-
     let path = "qrcode.png";
     let mut file = File::create(path).unwrap_or_else(|e| panic!("Failed to create file: {}", e));
     file.write_all(image.as_bytes()).unwrap_or_else(|e| panic!("Failed to write image data: {}", e));
